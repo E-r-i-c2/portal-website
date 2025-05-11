@@ -4,59 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Website Framework</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Top Bar -->
+  <!-- Top Navigation Bar -->
   <header class="top-bar">
     <div class="logo">Portal</div>
-    <input type="text" class="search-bar" placeholder="Search games...">
-    <nav class="categories">Categories</nav>
-    <button class="sign-in">Sign In</button>
-    <select class="language">
-      <option>EN</option>
-      <option>ES</option>
-      <option>FR</option>
-    </select>
+    <nav class="nav-links">
+      <a href="#games" class="nav-link">Games</a>
+      <a href="#news" class="nav-link">News</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#careers" class="nav-link">Careers</a>
+      <a href="#support" class="nav-link">Support</a>
+    </nav>
   </header>
 
-  <!-- Top Section: Introduction, Background Video, Adam Head -->
-  <section class="intro-section">
-    <div class="intro-text">Welcome to the Portal! Play games, have fun, and enjoy the chaos.</div>
-    <video class="background-video" autoplay loop muted>
-      <source src="background.mp4" type="video/mp4">
-      <!-- Placeholder: Background video -->
-    </video>
-    <div class="adam-head"> <!-- Placeholder for Massive Adam Head -->
-      <span>ADAMS HEAD</span>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to Portal</h1>
+      <p class="hero-desc">Your gateway to the best games. Play, compete, and connect with a global community. Experience the next level of gaming, inspired by the world of Riot.</p>
+      <a href="#games" class="hero-btn">Explore Games</a>
     </div>
-    <!-- Ad Placeholder -->
-    <div class="ad ad-top">Ad Placeholder (Top)</div>
   </section>
 
-  <!-- Middle Section: Game Columns -->
-  <main class="game-columns">
-    <div class="game-column">
-      <div class="game-placeholder">Game 1</div>
-      <div class="ad ad-middle">Ad Placeholder (Middle 1)</div>
-    </div>
-    <div class="game-column">
-      <div class="game-placeholder">Game 2</div>
-      <div class="ad ad-middle">Ad Placeholder (Middle 2)</div>
-    </div>
-    <div class="game-column">
-      <div class="game-placeholder">Game 3</div>
-      <div class="ad ad-middle">Ad Placeholder (Middle 3)</div>
-    </div>
-    <!-- Add more columns as needed -->
+  <!-- Game Card Grid -->
+  <main id="games" class="game-grid">
+    <a class="game-card" href="game1.html">
+      <img src="https://via.placeholder.com/300x400?text=Game+1" alt="Game 1 Cover">
+      <div class="game-title">Game 1</div>
+    </a>
+    <a class="game-card" href="game2.html">
+      <img src="https://via.placeholder.com/300x400?text=Game+2" alt="Game 2 Cover">
+      <div class="game-title">Game 2</div>
+    </a>
+    <a class="game-card" href="game3.html">
+      <img src="https://via.placeholder.com/300x400?text=Game+3" alt="Game 3 Cover">
+      <div class="game-title">Game 3</div>
+    </a>
+    <!-- Add more game cards as needed -->
   </main>
 
-  <!-- Bottom Section: Poki Ad, Back to Top -->
-  <footer class="bottom-section">
-    <div class="ad poki-ad">Poki Ad Placeholder</div>
-    <button id="back-to-top">Back to Top</button>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#privacy" class="footer-link">Privacy Notice</a>
+      <a href="#terms" class="footer-link">Terms of Service</a>
+      <a href="#legal" class="footer-link">Legal</a>
+      <a href="#player-support" class="footer-link">Player Support</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" /></a>
+      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
+      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
+      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" /></a>
+    </div>
+    <div class="copyright">&copy; 2025 Portal. All Rights Reserved.</div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html> 
