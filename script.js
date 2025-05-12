@@ -14,17 +14,15 @@ function closeModal(id) {
   document.body.style.overflow = '';
 }
 
-// Open modals on nav link click
+// Open modals on nav link click (About is now a real page, not a modal)
 const modalLinks = [
   { link: 'news-link', modal: 'news-modal' },
   { link: 'support-link', modal: 'support-modal' },
-  { link: 'about-link', modal: 'about-modal' },
   { link: 'careers-link', modal: 'careers-modal' },
   { link: 'login-link', modal: 'login-modal' },
   // Footer links
   { link: 'footer-news-link', modal: 'news-modal' },
   { link: 'footer-support-link', modal: 'support-modal' },
-  { link: 'footer-about-link', modal: 'about-modal' },
   { link: 'footer-careers-link', modal: 'careers-modal' },
 ];
 modalLinks.forEach(({ link, modal }) => {
