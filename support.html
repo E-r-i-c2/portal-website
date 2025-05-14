@@ -3,48 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support - Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900;400&display=swap" rel="stylesheet">
+  <title>Support | Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Top Navigation Bar -->
   <header class="top-bar">
     <div class="logo">Portal</div>
     <nav class="nav-links">
-      <a href="news.html" class="nav-link">News</a>
+      <a href="index.html" class="nav-link home-link">Home</a>
+      <a href="#" class="nav-link" id="news-link">News</a>
       <a href="support.html" class="nav-link">Support</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="careers.html" class="nav-link">Careers</a>
-      <button class="hero-btn" id="loginBtn" style="margin-left:24px;">Log In</button>
+      <a href="learn.html" class="nav-link" id="learn-link">Learn</a>
+      <a href="about.html" class="nav-link" id="about-link">About</a>
+      <a href="#" class="nav-link" id="careers-link">Careers</a>
+      <a href="#" class="nav-link" id="login-link">Log In</a>
     </nav>
   </header>
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Support</h1>
-      <p class="hero-desc">How can we help you? Find answers and get in touch with Portal support.</p>
-    </div>
-  </section>
-  <main style="max-width:900px;margin:40px auto 0 auto;padding:0 5vw;">
-    <div style="background:#18181c;padding:32px 24px;border-radius:16px;box-shadow:0 2px 16px #0006;">
-      <h2 style="color:#fff;font-weight:700;margin-bottom:12px;">Support Center</h2>
-      <p style="color:#aaa;">For help, contact <a href="mailto:support@portal.com" style="color:#e11d48;">support@portal.com</a> or check back soon for FAQs.</p>
-    </div>
+
+  <!-- Support Section -->
+  <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0 32px 0;">
+    <h1 class="hero-title">Support</h1>
+    <p class="hero-desc" style="max-width:600px;">How can we help you? Contact support or browse FAQs here. (Content coming soon.)</p>
   </main>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <a href="news.html" class="footer-link">News</a>
+      <a href="#" class="footer-link" id="footer-news-link">News</a>
       <a href="support.html" class="footer-link">Support</a>
-      <a href="about.html" class="footer-link">About</a>
-      <a href="careers.html" class="footer-link">Careers</a>
+      <a href="about.html" class="footer-link" id="footer-about-link">About</a>
+      <a href="#" class="footer-link" id="footer-careers-link">Careers</a>
     </div>
     <div class="social-icons">
-      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" width="32"></a>
-      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="32"></a>
-      <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" width="32"></a>
+      <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Twitter" width="32"></a>
+      <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Facebook" width="32"></a>
+      <a href="https://instagram.com/kyleeeliu" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @kyleeeliu" width="32"></a>
+      <a href="https://instagram.com/itzmeadam69" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @itzmeadam69" width="32"></a>
     </div>
     <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
   </footer>
+
+  <script src="script.js"></script>
+
+  <!-- Login Modal -->
   <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
     <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
       <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
@@ -56,14 +61,6 @@
       </form>
     </div>
   </div>
-  <script>
-    const loginBtn = document.getElementById('loginBtn');
-    const loginModal = document.getElementById('loginModal');
-    const closeModal = document.getElementById('closeModal');
-    loginBtn.onclick = () => loginModal.style.display = 'flex';
-    closeModal.onclick = () => loginModal.style.display = 'none';
-    window.onclick = (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; };
-    loginModal.querySelector('form').onsubmit = e => { e.preventDefault(); alert('Logged in! (demo)'); loginModal.style.display = 'none'; };
-  </script>
+
 </body>
 </html> 

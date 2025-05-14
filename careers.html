@@ -45,6 +45,17 @@
     </div>
     <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
   </footer>
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeModal = document.getElementById('closeModal');
+    loginBtn.onclick = () => loginModal.style.display = 'flex';
+    closeModal.onclick = () => loginModal.style.display = 'none';
+    window.onclick = (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; };
+    loginModal.querySelector('form').onsubmit = e => { e.preventDefault(); alert('Logged in! (demo)'); loginModal.style.display = 'none'; };
+  </script>
+
+  <!-- Login Modal -->
   <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
     <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
       <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
@@ -56,14 +67,5 @@
       </form>
     </div>
   </div>
-  <script>
-    const loginBtn = document.getElementById('loginBtn');
-    const loginModal = document.getElementById('loginModal');
-    const closeModal = document.getElementById('closeModal');
-    loginBtn.onclick = () => loginModal.style.display = 'flex';
-    closeModal.onclick = () => loginModal.style.display = 'none';
-    window.onclick = (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; };
-    loginModal.querySelector('form').onsubmit = e => { e.preventDefault(); alert('Logged in! (demo)'); loginModal.style.display = 'none'; };
-  </script>
 </body>
 </html> 

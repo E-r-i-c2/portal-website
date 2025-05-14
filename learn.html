@@ -16,7 +16,7 @@
     <nav class="nav-links">
       <a href="index.html" class="nav-link home-link">Home</a>
       <a href="#" class="nav-link" id="news-link">News</a>
-      <a href="#" class="nav-link" id="support-link">Support</a>
+      <a href="support.html" class="nav-link">Support</a>
       <a href="learn.html" class="nav-link" id="learn-link">Learn</a>
       <a href="about.html" class="nav-link" id="about-link">About</a>
       <a href="#" class="nav-link" id="careers-link">Careers</a>
@@ -48,5 +48,19 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Login Modal -->
+  <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
+    <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
+      <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
+      <h2 style="color:#fff;font-weight:800;margin-bottom:18px;">Log In</h2>
+      <form>
+        <input type="text" placeholder="Username" style="width:100%;margin-bottom:16px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
+        <input type="password" placeholder="Password" style="width:100%;margin-bottom:18px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
+        <button type="submit" class="hero-btn" style="width:100%;">Log In</button>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html> 
