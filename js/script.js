@@ -56,6 +56,7 @@ window.addEventListener('keydown', function(e) {
   }
 });
 
+<<<<<<< Updated upstream
 // --- Robust Login Modal Handler (Always Works) ---
 (function() {
   function showLoginModal() {
@@ -119,3 +120,13 @@ window.addEventListener('keydown', function(e) {
     }
   });
 })(); 
+=======
+// Log In form (demo only)
+document.querySelectorAll('.login-form').forEach(form => {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Logged in! (Demo only)');
+    closeModal('login-modal');
+  });
+}); 
+>>>>>>> Stashed changes
