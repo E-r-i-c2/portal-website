@@ -16,12 +16,10 @@ function closeModal(id) {
 
 // Open modals on nav link click (About is now a real page, not a modal)
 const modalLinks = [
-  { link: 'news-link', modal: 'news-modal' },
   { link: 'support-link', modal: 'support-modal' },
   { link: 'careers-link', modal: 'careers-modal' },
   { link: 'login-link', modal: 'login-modal' },
   // Footer links
-  { link: 'footer-news-link', modal: 'news-modal' },
   { link: 'footer-support-link', modal: 'support-modal' },
   { link: 'footer-careers-link', modal: 'careers-modal' },
 ];
