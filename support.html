@@ -28,6 +28,37 @@
   <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0 32px 0;">
     <h1 class="hero-title">Support</h1>
     <p class="hero-desc" style="max-width:600px;">How can we help you? Contact support or browse FAQs here. (Content coming soon.)</p>
+    <section class="faq-section" style="margin-top:40px;max-width:600px;width:100%;background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;">
+      <h2 style="color:#e11d48;margin-bottom:18px;">Frequently Asked Questions</h2>
+      <div class="faq-item" style="margin-bottom:18px;">
+        <div style="font-weight:700;">How do I create an account?</div>
+        <div style="color:#ccc;">Click the "Log In" button in the top right and select "Sign Up" to create your free Portal account.</div>
+      </div>
+      <div class="faq-item" style="margin-bottom:18px;">
+        <div style="font-weight:700;">I forgot my password. What should I do?</div>
+        <div style="color:#ccc;">On the login modal, click "Forgot password?" and follow the instructions to reset your password.</div>
+      </div>
+      <div class="faq-item" style="margin-bottom:18px;">
+        <div style="font-weight:700;">How do I report a bug or issue?</div>
+        <div style="color:#ccc;">Please use the Support page to contact us or email support@portal.com with details about the issue.</div>
+      </div>
+      <div class="faq-item" style="margin-bottom:18px;">
+        <div style="font-weight:700;">Can I suggest a new game or feature?</div>
+        <div style="color:#ccc;">Absolutely! We welcome suggestions. Use the Support page or our feedback form to share your ideas.</div>
+      </div>
+      <div class="faq-item">
+        <div style="font-weight:700;">Where can I find the latest updates?</div>
+        <div style="color:#ccc;">Check the News page for the latest updates, announcements, and new features.</div>
+      </div>
+    </section>
+    <section class="feedback-section" style="margin-top:40px;max-width:600px;width:100%;background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;">
+      <h2 style="color:#e11d48;margin-bottom:18px;">Feedback</h2>
+      <form id="feedback-form" style="display:flex;flex-direction:column;gap:16px;">
+        <textarea id="feedback-text" rows="4" placeholder="Type your feedback here..." style="resize:vertical;padding:12px;border-radius:8px;border:none;font-size:1em;"></textarea>
+        <button type="submit" style="background:#e11d48;color:#fff;padding:10px 0;border:none;border-radius:8px;font-size:1.1em;font-weight:700;cursor:pointer;">Submit Feedback</button>
+      </form>
+      <div id="feedback-message" style="margin-top:12px;font-size:1em;"></div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -47,6 +78,36 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const feedback = document.getElementById('feedback-text').value.trim();
+    const messageDiv = document.getElementById('feedback-message');
+    if (!feedback) {
+      messageDiv.textContent = 'Please enter your feedback.';
+      messageDiv.style.color = '#e11d48';
+      return;
+    }
+    try {
+      const res = await fetch('/submit-feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ feedback })
+      });
+      if (res.ok) {
+        messageDiv.textContent = 'Thank you for your feedback!';
+        messageDiv.style.color = '#4ade80';
+        document.getElementById('feedback-text').value = '';
+      } else {
+        messageDiv.textContent = 'Failed to submit feedback. Please try again later.';
+        messageDiv.style.color = '#e11d48';
+      }
+    } catch (err) {
+      messageDiv.textContent = 'Failed to submit feedback. Please try again later.';
+      messageDiv.style.color = '#e11d48';
+    }
+  });
+  </script>
 
   <!-- Login Modal -->
   <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
