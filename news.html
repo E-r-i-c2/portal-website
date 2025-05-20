@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming News - Portal</title>
+  <title>News - Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +13,7 @@
     <div class="logo">Portal</div>
     <nav class="nav-links">
       <a href="index.html" class="nav-link home-link">Home</a>
-      <a href="#" class="nav-link" id="news-link">News</a>
+      <a href="news.html" class="nav-link" id="news-link">News</a>
       <a href="support.html" class="nav-link">Support</a>
       <a href="learn.html" class="nav-link" id="learn-link">Learn</a>
       <a href="about.html" class="nav-link" id="about-link">About</a>
@@ -22,49 +22,28 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section" style="min-height:260px;">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Gaming News</h1>
-      <p class="hero-desc">Latest releases, player achievements, and industry highlights—updated live for you.</p>
-    </div>
-  </section>
-
-  <!-- News Feed -->
-  <main style="max-width:900px;margin:48px auto 0 auto;padding:0 5vw;">
-    <section>
-      <h2 style="font-size:2em;font-weight:800;margin-bottom:18px;color:#e11d48;">Latest Headlines</h2>
-      <div id="news-feed" style="min-height:180px;">
-        <div class="news-loading" style="color:#bbb;font-size:1.2em;">Loading news...</div>
-      </div>
-    </section>
+  <!-- News Section -->
+  <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0 32px 0;">
+    <h1 class="hero-title">News</h1>
+    <p class="hero-desc" style="max-width:600px;">Latest updates and announcements will appear here. (Content coming soon.)</p>
+    <article class="news-article" style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-top:32px;max-width:600px;width:100%;color:#fff;">
+      <h2 style="color:#e11d48;margin-bottom:10px;">Test Article: Portal Launches New Feature!</h2>
+      <p style="color:#ccc;">We are excited to announce the launch of our brand new feature on Portal. Stay tuned for more updates and exclusive content coming your way soon!</p>
+      <div style="font-size:0.95em;color:#888;margin-top:18px;">Posted on: <span id="test-article-date">2024-05-01</span></div>
+    </article>
+    <div id="news-feed"></div>
   </main>
 
   <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <a href="index.html" class="footer-link">Home</a>
-      <span class="footer-link">News</span>
-      <span class="footer-link">Support</span>
+      <a href="news.html" class="footer-link" id="footer-news-link">News</a>
+      <a href="support.html" class="footer-link" id="footer-support-link">Support</a>
       <a href="about.html" class="footer-link" id="footer-about-link">About</a>
-      <span class="footer-link">Careers</span>
+      <a href="#" class="footer-link" id="footer-careers-link">Careers</a>
     </div>
     <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
   </footer>
-
-  <!-- Login Modal -->
-  <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
-    <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
-      <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
-      <h2 style="color:#fff;font-weight:800;margin-bottom:18px;">Log In</h2>
-      <form>
-        <input type="text" placeholder="Username" style="width:100%;margin-bottom:16px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
-        <input type="password" placeholder="Password" style="width:100%;margin-bottom:18px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
-        <button type="submit" class="hero-btn" style="width:100%;">Log In</button>
-      </form>
-    </div>
-  </div>
 
   <script src="script.js"></script>
   <script src="news.js"></script>
