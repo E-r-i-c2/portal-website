@@ -96,10 +96,33 @@ window.addEventListener('keydown', function(e) {
       };
       var form = modal.querySelector('form');
       if (form) {
-        form.onsubmit = function(e) {
+        form.onsubmit = async function(e) {
           e.preventDefault();
-          alert('Logged in! (Demo only)');
-          hideLoginModal();
+          // Get username and password from form inputs
+          var inputs = form.querySelectorAll('input');
+          var username = inputs[0].value.trim();
+          var password = inputs[1].value;
+          // Simple validation
+          if (!username || !password) {
+            alert('Please enter both username and password.');
+            return;
+          }
+          try {
+            const res = await fetch('/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              alert('Login successful!');
+              hideLoginModal();
+            } else {
+              alert(data.message || 'Login failed.');
+            }
+          } catch (err) {
+            alert('Network error. Please try again.');
+          }
         };
       }
     }

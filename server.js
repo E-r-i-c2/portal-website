@@ -50,6 +50,48 @@ app.get('/feedbacks', (req, res) => {
   }
 });
 
+// Simple login endpoint (hardcoded user)
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // Hardcoded credentials (for demo)
+  const USER = 'admin';
+  const PASS = 'password123';
+
+  if (username === USER && password === PASS) {
+    res.json({ success: true, message: 'Login successful' });
+  } else {
+    res.status(401).json({ success: false, message: 'Invalid username or password' });
+  }
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/index.html'));
+});
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/about.html'));
+});
+app.get('/learn', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/learn.html'));
+});
+app.get('/news', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/news.html'));
+});
+app.get('/support', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/support.html'));
+});
+app.get('/careers', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/careers.html'));
+});
+app.get('/game1', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/game1.html'));
+});
+app.get('/game2', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/game2.html'));
+});
+app.get('/game3', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/game3.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
