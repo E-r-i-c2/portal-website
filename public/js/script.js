@@ -57,21 +57,21 @@ window.addEventListener('keydown', function(e) {
 });
 
 // --- Robust Login Modal Handler (Always Works) ---
+function showLoginModal() {
+  var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+function hideLoginModal() {
+  var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
 (function() {
-  function showLoginModal() {
-    var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
-    if (modal) {
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-  }
-  function hideLoginModal() {
-    var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
-    if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  }
   // Attach directly if present
   function attachLoginHandler() {
     var loginLink = document.getElementById('login-link');
@@ -141,4 +141,91 @@ window.addEventListener('keydown', function(e) {
       hideLoginModal();
     }
   });
+})();
+
+// --- Sign Up Modal Handler ---
+(function() {
+  function showSignupModal() {
+    var modal = document.getElementById('signupModal');
+    // Hide both possible login modals
+    var loginModal1 = document.getElementById('loginModal');
+    var loginModal2 = document.getElementById('login-modal');
+    if (loginModal1) loginModal1.style.display = 'none';
+    if (loginModal2) loginModal2.style.display = 'none';
+    if (modal) {
+      // Clear form and message
+      var form = document.getElementById('signupForm');
+      if (form) form.reset();
+      var msg = document.getElementById('signup-message');
+      if (msg) { msg.textContent = ''; msg.style.color = '#e11d48'; }
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function hideSignupModal() {
+    var modal = document.getElementById('signupModal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+  function setSignupMessage(msg, color) {
+    var m = document.getElementById('signup-message');
+    if (m) { m.textContent = msg; m.style.color = color || '#e11d48'; }
+  }
+  function attachSignupHandler() {
+    document.addEventListener('click', function(e) {
+      if (e.target && (e.target.id === 'open-signup' || e.target.id === 'open-signup2')) {
+        e.preventDefault();
+        hideLoginModal();
+        showSignupModal();
+      }
+      if (e.target && e.target.id === 'closeSignupModal') {
+        hideSignupModal();
+      }
+      if (e.target && e.target.id === 'back-to-login') {
+        hideSignupModal();
+        showLoginModal();
+      }
+    });
+    var signupModal = document.getElementById('signupModal');
+    if (signupModal) {
+      signupModal.onclick = function(e) { if (e.target === signupModal) hideSignupModal(); };
+      var form = document.getElementById('signupForm');
+      if (form) {
+        form.onsubmit = async function(e) {
+          e.preventDefault();
+          var username = document.getElementById('signup-username').value.trim();
+          var password = document.getElementById('signup-password').value;
+          var confirm = document.getElementById('signup-confirm').value;
+          if (!username || !password || !confirm) {
+            setSignupMessage('Please fill in all fields.');
+            return;
+          }
+          if (password !== confirm) {
+            setSignupMessage('Passwords do not match.');
+            return;
+          }
+          setSignupMessage('');
+          try {
+            const res = await fetch('/signup', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              setSignupMessage('Sign up successful! You can now log in.', '#4ade80');
+              setTimeout(() => { hideSignupModal(); showLoginModal(); }, 1200);
+            } else {
+              setSignupMessage(data.message || 'Sign up failed.');
+            }
+          } catch (err) {
+            setSignupMessage('Network error. Please try again.');
+          }
+        };
+      }
+    }
+  }
+  document.addEventListener('DOMContentLoaded', attachSignupHandler);
 })(); 

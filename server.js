@@ -7,6 +7,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 const FEEDBACK_FILE = path.join(__dirname, 'feedback.json');
+const USERS_FILE = path.join(__dirname, 'users.json');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -57,11 +58,47 @@ app.post('/login', (req, res) => {
   const USER = 'admin';
   const PASS = 'password123';
 
+  // Check hardcoded user
   if (username === USER && password === PASS) {
-    res.json({ success: true, message: 'Login successful' });
-  } else {
-    res.status(401).json({ success: false, message: 'Invalid username or password' });
+    return res.json({ success: true, message: 'Login successful' });
   }
+
+  // Check registered users
+  let users = [];
+  if (fs.existsSync(USERS_FILE)) {
+    try {
+      users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+    } catch (e) {
+      users = [];
+    }
+  }
+  if (users.find(u => u.username === username && u.password === password)) {
+    return res.json({ success: true, message: 'Login successful' });
+  }
+
+  res.status(401).json({ success: false, message: 'Invalid username or password' });
+});
+
+// Sign up endpoint
+app.post('/signup', (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ success: false, message: 'Username and password are required.' });
+  }
+  let users = [];
+  if (fs.existsSync(USERS_FILE)) {
+    try {
+      users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+    } catch (e) {
+      users = [];
+    }
+  }
+  if (users.find(u => u.username === username)) {
+    return res.status(409).json({ success: false, message: 'Username already exists.' });
+  }
+  users.push({ username, password });
+  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf8');
+  res.json({ success: true, message: 'Sign up successful!' });
 });
 
 app.get('/', (req, res) => {
