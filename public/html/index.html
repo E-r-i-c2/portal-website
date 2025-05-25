@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn | Portal</title>
+  <title>Portal Website Framework</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <!-- Top Navigation Bar -->
   <header class="top-bar">
     <div class="logo">Portal</div>
     <nav class="nav-links">
-      <a href="index.html" class="nav-link home-link">Home</a>
+      <a href="#" class="nav-link home-link">Home</a>
       <a href="news.html" class="nav-link" id="news-link">News</a>
       <a href="support.html" class="nav-link">Support</a>
       <a href="learn.html" class="nav-link" id="learn-link">Learn</a>
@@ -23,16 +23,37 @@
     </nav>
   </header>
 
-  <!-- Learn Section -->
-  <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0 32px 0;">
-    <h1 class="hero-title">Learn</h1>
-    <p class="hero-desc" style="max-width:600px;">Welcome to the Learn section! Here you'll find resources, guides, and tips to help you get the most out of Portal. (Content coming soon.)</p>
-  </main>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to Portal</h1>
+      <div style="font-size:1.5em;font-weight:900;color:#e11d48;margin-bottom:12px;letter-spacing:1px;">Home of Original Games</div>
+      <p class="hero-desc">Discover and play exclusive, original games you won't find anywhere else. Join our community and experience the next generation of gaming—only on Portal.</p>
+      <a href="#games" class="hero-btn">Browse Our Originals</a>
+    </div>
+  </section>
+
+  <!-- Game Card Grid (placeholder) -->
+  <section class="game-grid" id="games">
+    <div class="game-card">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Game 1">
+      <div class="game-title">Game 1</div>
+    </div>
+    <div class="game-card">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Game 2">
+      <div class="game-title">Game 2</div>
+    </div>
+    <div class="game-card">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Game 3">
+      <div class="game-title">Game 3</div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <a href="support.html" class="footer-link" id="footer-support-link">Support</a>
+      <a href="support.html" class="footer-link">Support</a>
       <a href="about.html" class="footer-link" id="footer-about-link">About</a>
     </div>
     <div class="social-icons">
@@ -44,7 +65,27 @@
     <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Modals -->
+  <div class="modal" id="support-modal">
+    <div class="modal-content">
+      <span class="close" data-modal="support-modal">&times;</span>
+      <h2>Support</h2>
+      <p>How can we help you? Contact support or browse FAQs here.</p>
+    </div>
+  </div>
+  <div class="modal" id="login-modal">
+    <div class="modal-content login-modal-content">
+      <span class="close" data-modal="login-modal">&times;</span>
+      <h2>Log In</h2>
+      <form class="login-form">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
 
   <!-- Login Modal -->
   <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">

@@ -10,7 +10,7 @@ const FEEDBACK_FILE = path.join(__dirname, 'feedback.json');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname)); // Serve your static files (HTML, CSS, JS, etc.)
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public' directory
 
 // Handle feedback submission
 app.post('/submit-feedback', (req, res) => {
