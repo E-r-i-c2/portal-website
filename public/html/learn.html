@@ -25,78 +25,60 @@
 
   <!-- Learn Section -->
   <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:64px 0 32px 0;max-width:700px;margin:0 auto;">
-    <h1 class="hero-title">Learn to Code on Cursor</h1>
-    <p class="hero-desc" style="max-width:600px;">Welcome! This step-by-step guide will help you create your very first project and learn the basics of coding using Cursor. No experience needed—just follow along!</p>
-    <section style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-top:32px;width:100%;color:#fff;">
-      <h2 style="color:#e11d48;margin-bottom:10px;">Step 1: What is Cursor?</h2>
-      <p>Cursor is a modern code editor that makes it easy to start coding, experiment, and build projects. You can write code, run it, and see results instantly.</p>
-      <h2 style="color:#e11d48;margin-top:28px;margin-bottom:10px;">Step 2: Create Your First Project</h2>
-      <ol style="margin-left:18px;">
-        <li>Open Cursor on your computer.</li>
-        <li>Click <b>File &gt; New Project</b> (or use the <b>+ New</b> button if available).</li>
-        <li>Choose a folder for your project and give it a name (e.g., <code>my-first-website</code>).</li>
+    <h1 class="hero-title">Learn to Get Started with Cursor & the Agent</h1>
+    <p class="hero-desc" style="max-width:600px;">Welcome! This guide will help you download Cursor, set it up, and start using the powerful Agent feature to help you code. No experience needed—just follow along!</p>
+    <section class="guide-section">
+      <h2 class="guide-step">Step 1: What is Cursor?</h2>
+      <p>Cursor is a modern, AI-powered code editor that helps you write, understand, and improve code faster. It features an integrated Agent (AI assistant) that can answer questions, generate code, and help you learn programming.</p>
+      <h2 class="guide-step">Step 2: Download and Install Cursor</h2>
+      <ol class="guide-list">
+        <li>Go to the <a href="https://www.cursor.so/download" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Cursor Download Page</a>.</li>
+        <li>Choose your operating system:
+          <ul>
+            <li><b>Windows:</b> Download the <code>.exe</code> installer and run it.</li>
+            <li><b>macOS:</b> Download the <code>.dmg</code> file, open it, and drag Cursor to your Applications folder.</li>
+            <li><b>Linux:</b> Download the <code>.AppImage</code> or follow the instructions for your distribution.</li>
+          </ul>
+        </li>
+        <li>Open Cursor after installation is complete.</li>
       </ol>
-      <h2 style="color:#e11d48;margin-top:28px;margin-bottom:10px;">Step 3: Make Your First File</h2>
-      <ol style="margin-left:18px;">
-        <li>Right-click in the file explorer and select <b>New File</b>.</li>
-        <li>Name it <code>index.html</code>.</li>
-        <li>Copy and paste this code into your new file:</li>
+      <h2 class="guide-step">Step 3: Opening Cursor for the First Time</h2>
+      <ol class="guide-list">
+        <li>When you launch Cursor, you'll see a welcome screen.</li>
+        <li>You can open a folder, create a new file, or explore the interface.</li>
+        <li>Take a moment to look around—Cursor is similar to other code editors, but with built-in AI features!</li>
       </ol>
-      <pre style="background:#18181c;padding:12px 16px;border-radius:8px;overflow-x:auto;color:#e5e5e5;font-size:1em;">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My First Web Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello, world!&lt;/h1&gt;
-    &lt;p&gt;This is my first web page on Cursor.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+      <h2 class="guide-step">Step 4: Meet the Agent</h2>
+      <ol class="guide-list">
+        <li>The Agent is Cursor's built-in AI assistant, ready to help you with coding questions, explanations, and code generation.</li>
+        <li>To open the Agent panel, look for the chat icon (usually in the sidebar) or press <code>Cmd+I</code> (Mac) or <code>Ctrl+I</code> (Windows/Linux).</li>
+        <li>A chat window will appear where you can type your questions or requests.</li>
+      </ol>
+      <h2 class="guide-step">Step 5: How to Use the Agent</h2>
+      <ol class="guide-list">
+        <li>Type a question or prompt in the Agent chat. For example:</li>
+      </ol>
+      <pre class="guide-code">How do I write a Python function that adds two numbers?
 </pre>
-      <h2 style="color:#e11d48;margin-top:28px;margin-bottom:10px;">Step 4: View Your Web Page</h2>
-      <ol style="margin-left:18px;">
-        <li>Right-click <code>index.html</code> and select <b>Open with Live Server</b> (or use the built-in preview feature).</li>
-        <li>You should see your web page in a new tab!</li>
+      <ol class="guide-list">
+        <li>The Agent will respond with an explanation and example code.</li>
+        <li>You can ask follow-up questions, request code in different languages, or ask for explanations of errors.</li>
+        <li>Try these example prompts:
+          <ul>
+            <li>"Explain what a variable is in JavaScript."</li>
+            <li>"Generate a simple HTML page with a button."</li>
+            <li>"How do I fix a syntax error in Python?"</li>
+          </ul>
+        </li>
+        <li>You can copy code from the Agent's response and paste it into your files, or ask the Agent to make changes directly if supported.</li>
       </ol>
-      <h2 style="color:#e11d48;margin-top:28px;margin-bottom:10px;">Step 5: Add Some Style</h2>
-      <ol style="margin-left:18px;">
-        <li>In the same folder, create a new file called <code>style.css</code>.</li>
-        <li>Add this code to <code>style.css</code>:</li>
-      </ol>
-      <pre style="background:#18181c;padding:12px 16px;border-radius:8px;overflow-x:auto;color:#e5e5e5;font-size:1em;">body {
-  background: #18181c;
-  color: #e5e5e5;
-  font-family: sans-serif;
-  padding: 40px;
-}
-h1 {
-  color: #e11d48;
-}
-</pre>
-      <ol style="margin-left:18px;">
-        <li>Link your CSS file in <code>index.html</code> by adding this line inside the <code>&lt;head&gt;</code>:</li>
-      </ol>
-      <pre style="background:#18181c;padding:12px 16px;border-radius:8px;overflow-x:auto;color:#e5e5e5;font-size:1em;">&lt;link rel="stylesheet" href="style.css"&gt;
-</pre>
-      <h2 style="color:#e11d48;margin-top:28px;margin-bottom:10px;">Step 6: Make It Interactive</h2>
-      <ol style="margin-left:18px;">
-        <li>Create a new file called <code>script.js</code>.</li>
-        <li>Add this code to <code>script.js</code>:</li>
-      </ol>
-      <pre style="background:#18181c;padding:12px 16px;border-radius:8px;overflow-x:auto;color:#e5e5e5;font-size:1em;">alert('Welcome to your first website!');
-</pre>
-      <ol style="margin-left:18px;">
-        <li>Link your JS file in <code>index.html</code> just before <code>&lt;/body&gt;</code>:</li>
-      </ol>
-      <pre style="background:#18181c;padding:12px 16px;border-radius:8px;overflow-x:auto;color:#e5e5e5;font-size:1em;">&lt;script src="script.js"&gt;&lt;/script&gt;
-</pre>
-      <h2 style="color:#e11d48;margin-top:28px;margin-bottom:10px;">Step 7: Keep Going!</h2>
-      <ul style="margin-left:18px;">
-        <li>Try changing the text, colors, or adding more elements.</li>
-        <li>Look up more HTML, CSS, and JavaScript tutorials online.</li>
-        <li>Ask for help on the Portal Support page or join our community!</li>
+      <h2 class="guide-step">Step 6: Next Steps</h2>
+      <ul class="guide-list">
+        <li>Experiment with the Agent—try asking it to explain code, generate examples, or help debug.</li>
+        <li>Check out the <a href="https://docs.cursor.so/" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Cursor Documentation</a> for more tips and advanced features.</li>
+        <li>If you need help, visit the Portal Support page or join the Cursor community.</li>
       </ul>
-      <p style="margin-top:18px;color:#e5e5e5;font-size:1.1em;"><b>Great job!</b> You've just made your first website. Keep experimenting and building!</p>
+      <p style="margin-top:18px;font-size:1.1em;"><b>You're ready!</b> Enjoy coding with Cursor and your new AI Agent assistant!</p>
     </section>
   </main>
 
