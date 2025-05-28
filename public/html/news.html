@@ -25,6 +25,7 @@
   <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0 32px 0;">
     <h1 class="hero-title">News</h1>
     <p class="hero-desc" style="max-width:600px;">Latest updates and announcements will appear here. (Content coming soon.)</p>
+    <div id="local-news"></div>
     <article class="news-article" style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-top:32px;max-width:600px;width:100%;color:#fff;">
       <h2 style="color:#e11d48;margin-bottom:10px;">Test Article: Portal Launches New Feature!</h2>
       <p style="color:#ccc;">We are excited to announce the launch of our brand new feature on Portal. Stay tuned for more updates and exclusive content coming your way soon!</p>
@@ -42,6 +43,22 @@
     </div>
     <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
   </footer>
+
+  <!-- Login Modal -->
+  <div class="modal" id="login-modal">
+    <div class="modal-content login-modal-content">
+      <span class="close" data-modal="login-modal">&times;</span>
+      <h2>Log In</h2>
+      <form class="login-form">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+      </form>
+      <div style="margin-top:12px;text-align:center;">
+        <a href="javascript:void(0)" id="open-signup" style="color:#e11d48;text-decoration:underline;cursor:pointer;">Don't have an account? Sign Up</a>
+      </div>
+    </div>
+  </div>
 
   <script src="../js/script.js"></script>
   <script src="../js/news.js"></script>

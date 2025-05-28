@@ -125,5 +125,12 @@
     </div>
   </div>
 
+  <script>
+    setupNewsAddButton();
+    fetchLocalNews().then(() => {
+      fetchGamingNews();
+    });
+  </script>
+
 </body>
 </html> 

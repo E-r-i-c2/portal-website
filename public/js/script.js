@@ -116,7 +116,13 @@ function hideLoginModal() {
             const data = await res.json();
             if (res.ok && data.success) {
               alert('Login successful!');
-              hideLoginModal();
+              if (data.isAdmin) {
+                window.isAdmin = true;
+                location.reload();
+              } else {
+                window.isAdmin = false;
+                hideLoginModal();
+              }
             } else {
               alert(data.message || 'Login failed.');
             }

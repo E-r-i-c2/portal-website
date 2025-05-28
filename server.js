@@ -8,6 +8,7 @@ const app = express();
 const PORT = 3000;
 const FEEDBACK_FILE = path.join(__dirname, 'feedback.json');
 const USERS_FILE = path.join(__dirname, 'users.json');
+const NEWS_FILE = path.join(__dirname, 'public/data/news.json');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -57,10 +58,18 @@ app.post('/login', (req, res) => {
   // Hardcoded credentials (for demo)
   const USER = 'admin';
   const PASS = 'password123';
+  // Admin credentials
+  const ADMIN_USER = 'admin123';
+  const ADMIN_PASS = 'admin123';
+
+  // Check admin user
+  if (username === ADMIN_USER && password === ADMIN_PASS) {
+    return res.json({ success: true, message: 'Admin login successful', isAdmin: true });
+  }
 
   // Check hardcoded user
   if (username === USER && password === PASS) {
-    return res.json({ success: true, message: 'Login successful' });
+    return res.json({ success: true, message: 'Login successful', isAdmin: false });
   }
 
   // Check registered users
@@ -73,7 +82,7 @@ app.post('/login', (req, res) => {
     }
   }
   if (users.find(u => u.username === username && u.password === password)) {
-    return res.json({ success: true, message: 'Login successful' });
+    return res.json({ success: true, message: 'Login successful', isAdmin: false });
   }
 
   res.status(401).json({ success: false, message: 'Invalid username or password' });
@@ -127,6 +136,43 @@ app.get('/game2', (req, res) => {
 });
 app.get('/game3', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/game3.html'));
+});
+
+// Get all news articles
+app.get('/api/news', (req, res) => {
+  let news = [];
+  if (fs.existsSync(NEWS_FILE)) {
+    try {
+      news = JSON.parse(fs.readFileSync(NEWS_FILE, 'utf8'));
+    } catch (e) {
+      news = [];
+    }
+  }
+  res.json(news);
+});
+
+// Add a new news article (no admin required)
+app.post('/api/news', (req, res) => {
+  const { title, content, date } = req.body;
+  if (!title || !content) {
+    return res.status(400).json({ success: false, message: 'Title and content are required.' });
+  }
+  let news = [];
+  if (fs.existsSync(NEWS_FILE)) {
+    try {
+      news = JSON.parse(fs.readFileSync(NEWS_FILE, 'utf8'));
+    } catch (e) {
+      news = [];
+    }
+  }
+  const newArticle = {
+    title: title.trim(),
+    content: content.trim(),
+    date: date || new Date().toISOString()
+  };
+  news.unshift(newArticle); // Add to top
+  fs.writeFileSync(NEWS_FILE, JSON.stringify(news, null, 2), 'utf8');
+  res.json({ success: true, article: newArticle });
 });
 
 app.listen(PORT, () => {
