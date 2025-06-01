@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Kaged</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="top-bar">
+    <div class="logo"><img src="/img/kaged-logo.jpg" alt="Kaged Logo" class="logo-img" style="height:40px;vertical-align:middle;"></div>
+    <nav class="nav-links">
+      <a href="/" class="nav-link home-link">Home</a>
+      <a href="/news" class="nav-link" id="news-link">News</a>
+      <a href="/support" class="nav-link">Support</a>
+      <a href="/learn" class="nav-link" id="learn-link">Learn</a>
+      <a href="/about" class="nav-link" id="about-link">About</a>
+      <a href="/settings" class="settings-btn" title="Settings" style="display:flex;align-items:center;justify-content:center;margin-left:12px;"><svg width="22" height="22" fill="none" stroke="#e11d48" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.36.36.59.86.59 1.41s-.23 1.05-.59 1.41z"/></svg></a>
+      <!-- .user-actions will be injected here by JS when logged in -->
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" style="min-height:240px;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Settings</h1>
+      <p class="hero-desc">Manage your Kaged account and preferences.</p>
+    </div>
+  </section>
+
+  <!-- Settings Content -->
+  <main style="max-width:700px;margin:48px auto 0 auto;padding:0 5vw;">
+    <section style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-bottom:40px;color:#fff;">
+      <h2 style="color:#e11d48;margin-bottom:18px;">Account Access</h2>
+      <div id="auth-tabs" style="display:flex;gap:24px;margin-bottom:18px;">
+        <button id="login-tab" class="auth-tab active" style="background:#e11d48;color:#fff;padding:8px 24px;border:none;border-radius:8px;font-weight:700;cursor:pointer;">Log In</button>
+        <button id="signup-tab" class="auth-tab" style="background:transparent;color:#e11d48;padding:8px 24px;border:1px solid #e11d48;border-radius:8px;font-weight:700;cursor:pointer;">Sign Up</button>
+      </div>
+      <form id="login-form" style="display:block;flex-direction:column;gap:12px;max-width:340px;">
+        <input type="text" id="login-username" placeholder="Username" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;margin-bottom:12px;">
+        <input type="password" id="login-password" placeholder="Password" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;margin-bottom:18px;">
+        <button type="submit" style="background:#e11d48;color:#fff;padding:10px 0;border:none;border-radius:8px;font-size:1.1em;font-weight:700;cursor:pointer;">Log In</button>
+        <div id="login-message" style="margin-top:10px;font-size:1em;"></div>
+      </form>
+      <form id="signup-form" style="display:none;flex-direction:column;gap:12px;max-width:340px;">
+        <input type="text" id="signup-username" placeholder="Username" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;margin-bottom:12px;">
+        <input type="password" id="signup-password" placeholder="Password" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;margin-bottom:12px;">
+        <input type="password" id="signup-confirm" placeholder="Confirm Password" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;margin-bottom:18px;">
+        <button type="submit" style="background:#e11d48;color:#fff;padding:10px 0;border:none;border-radius:8px;font-size:1.1em;font-weight:700;cursor:pointer;">Sign Up</button>
+        <div id="signup-message" style="margin-top:10px;font-size:1em;"></div>
+      </form>
+      <script>
+        // Tab switching logic
+        const loginTab = document.getElementById('login-tab');
+        const signupTab = document.getElementById('signup-tab');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const loginMsg = document.getElementById('login-message');
+        const signupMsg = document.getElementById('signup-message');
+        loginTab.onclick = function() {
+          loginTab.classList.add('active');
+          signupTab.classList.remove('active');
+          loginTab.style.background = '#e11d48';
+          loginTab.style.color = '#fff';
+          signupTab.style.background = 'transparent';
+          signupTab.style.color = '#e11d48';
+          signupTab.style.border = '1px solid #e11d48';
+          loginForm.style.display = 'block';
+          signupForm.style.display = 'none';
+        };
+        signupTab.onclick = function() {
+          signupTab.classList.add('active');
+          loginTab.classList.remove('active');
+          signupTab.style.background = '#e11d48';
+          signupTab.style.color = '#fff';
+          signupTab.style.border = 'none';
+          loginTab.style.background = 'transparent';
+          loginTab.style.color = '#e11d48';
+          loginTab.style.border = '1px solid #e11d48';
+          loginForm.style.display = 'none';
+          signupForm.style.display = 'block';
+        };
+        // Login form handler
+        loginForm.onsubmit = async function(e) {
+          e.preventDefault();
+          loginMsg.textContent = '';
+          const username = document.getElementById('login-username').value.trim();
+          const password = document.getElementById('login-password').value;
+          if (!username || !password) {
+            loginMsg.textContent = 'Please enter both username and password.';
+            loginMsg.style.color = '#e11d48';
+            return;
+          }
+          try {
+            const res = await fetch('/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              loginMsg.textContent = 'Login successful!';
+              loginMsg.style.color = '#4ade80';
+              loginForm.reset();
+            } else {
+              loginMsg.textContent = data.message || 'Login failed.';
+              loginMsg.style.color = '#e11d48';
+            }
+          } catch (err) {
+            loginMsg.textContent = 'Network error. Please try again.';
+            loginMsg.style.color = '#e11d48';
+          }
+        };
+        // Sign up form handler
+        signupForm.onsubmit = async function(e) {
+          e.preventDefault();
+          signupMsg.textContent = '';
+          const username = document.getElementById('signup-username').value.trim();
+          const password = document.getElementById('signup-password').value;
+          const confirm = document.getElementById('signup-confirm').value;
+          if (!username || !password || !confirm) {
+            signupMsg.textContent = 'Please fill in all fields.';
+            signupMsg.style.color = '#e11d48';
+            return;
+          }
+          if (password !== confirm) {
+            signupMsg.textContent = 'Passwords do not match.';
+            signupMsg.style.color = '#e11d48';
+            return;
+          }
+          try {
+            const res = await fetch('/signup', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              signupMsg.textContent = 'Sign up successful! You can now log in.';
+              signupMsg.style.color = '#4ade80';
+              signupForm.reset();
+              setTimeout(() => {
+                loginTab.click();
+                signupMsg.textContent = '';
+              }, 1200);
+            } else {
+              signupMsg.textContent = data.message || 'Sign up failed.';
+              signupMsg.style.color = '#e11d48';
+            }
+          } catch (err) {
+            signupMsg.textContent = 'Network error. Please try again.';
+            signupMsg.style.color = '#e11d48';
+          }
+        };
+      </script>
+    </section>
+    <section style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;color:#fff;">
+      <h2 style="color:#e11d48;margin-bottom:18px;">Profile Settings</h2>
+      <div style="display:flex;align-items:center;gap:24px;margin-bottom:24px;">
+        <img src="https://www.gravatar.com/avatar/?d=mp&s=64" alt="Profile" style="width:64px;height:64px;border-radius:50%;object-fit:cover;">
+        <div>
+          <div style="font-weight:700;font-size:1.1em;">Username: <span id="settings-username">(not set)</span></div>
+          <button style="background:#e11d48;color:#fff;padding:6px 18px;border:none;border-radius:8px;font-weight:700;cursor:pointer;margin-top:8px;">Change Profile Picture</button>
+        </div>
+      </div>
+      <h3 style="margin-top:24px;color:#fff;">Change Password</h3>
+      <form style="display:flex;flex-direction:column;gap:12px;max-width:340px;">
+        <input type="password" placeholder="Current Password" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;">
+        <input type="password" placeholder="New Password" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;">
+        <input type="password" placeholder="Confirm New Password" style="padding:10px 12px;border-radius:6px;border:none;background:#18181c;color:#fff;font-size:1em;">
+        <button type="submit" style="background:#e11d48;color:#fff;padding:10px 0;border:none;border-radius:8px;font-size:1.1em;font-weight:700;cursor:pointer;">Change Password</button>
+      </form>
+    </section>
+    <section style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;color:#fff;">
+      <h2 style="color:#e11d48;margin-bottom:18px;">Preferences</h2>
+      <p>More settings coming soon!</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="/support" class="footer-link">Support</a>
+      <a href="/about" class="footer-link" id="footer-about-link">About</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Twitter" width="32"></a>
+      <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Facebook" width="32"></a>
+      <a href="https://instagram.com/kyleeeliu" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @kyleeeliu" width="32"></a>
+      <a href="https://instagram.com/itzmeadam69" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @itzmeadam69" width="32"></a>
+    </div>
+    <div class="copyright">&copy; 2024 Kaged. All rights reserved.</div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html> 

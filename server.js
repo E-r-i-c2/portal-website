@@ -175,6 +175,10 @@ app.post('/api/news', (req, res) => {
   res.json({ success: true, article: newArticle });
 });
 
+app.get('/settings', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/settings.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

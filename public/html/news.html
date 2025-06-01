@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News - Portal</title>
+  <title>News - Kaged</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <!-- Top Navigation Bar -->
   <header class="top-bar">
-    <div class="logo">Portal</div>
+    <div class="logo"><img src="/img/kaged-logo.jpg" alt="Kaged Logo" class="logo-img" style="height:40px;vertical-align:middle;"></div>
     <nav class="nav-links">
       <a href="/" class="nav-link home-link">Home</a>
       <a href="/news" class="nav-link" id="news-link">News</a>
       <a href="/support" class="nav-link">Support</a>
       <a href="/learn" class="nav-link" id="learn-link">Learn</a>
       <a href="/about" class="nav-link" id="about-link">About</a>
-      <a href="#" class="nav-link" id="login-link">Log In</a>
+      <a href="/settings" class="settings-btn" title="Settings" style="display:flex;align-items:center;justify-content:center;margin-left:12px;"><svg width="22" height="22" fill="none" stroke="#e11d48" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.36.36.59.86.59 1.41s-.23 1.05-.59 1.41z"/></svg></a>
+      <!-- .user-actions will be injected here by JS when logged in -->
     </nav>
   </header>
 
@@ -27,8 +28,8 @@
     <p class="hero-desc" style="max-width:600px;">Latest updates and announcements will appear here. (Content coming soon.)</p>
     <div id="local-news"></div>
     <article class="news-article" style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-top:32px;max-width:600px;width:100%;color:#fff;">
-      <h2 style="color:#e11d48;margin-bottom:10px;">Test Article: Portal Launches New Feature!</h2>
-      <p style="color:#ccc;">We are excited to announce the launch of our brand new feature on Portal. Stay tuned for more updates and exclusive content coming your way soon!</p>
+      <h2 style="color:#e11d48;margin-bottom:10px;">Test Article: Kaged Launches New Feature!</h2>
+      <p style="color:#ccc;">We are excited to announce the launch of our brand new feature on Kaged. Stay tuned for more updates and exclusive content coming your way soon!</p>
       <div style="font-size:0.95em;color:#888;margin-top:18px;">Posted on: <span id="test-article-date">2024-05-01</span></div>
     </article>
     <!-- New static article with image -->
@@ -48,24 +49,8 @@
       <a href="/support" class="footer-link" id="footer-support-link">Support</a>
       <a href="/about" class="footer-link" id="footer-about-link">About</a>
     </div>
-    <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
+    <div class="copyright">&copy; 2024 Kaged. All rights reserved.</div>
   </footer>
-
-  <!-- Login Modal -->
-  <div class="modal" id="login-modal">
-    <div class="modal-content login-modal-content">
-      <span class="close" data-modal="login-modal">&times;</span>
-      <h2>Log In</h2>
-      <form class="login-form">
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Log In</button>
-      </form>
-      <div style="margin-top:12px;text-align:center;">
-        <a href="javascript:void(0)" id="open-signup" style="color:#e11d48;text-decoration:underline;cursor:pointer;">Don't have an account? Sign Up</a>
-      </div>
-    </div>
-  </div>
 
   <script src="../js/script.js"></script>
   <script src="../js/news.js"></script>

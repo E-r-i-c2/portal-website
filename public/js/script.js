@@ -234,4 +234,84 @@ function hideLoginModal() {
     }
   }
   document.addEventListener('DOMContentLoaded', attachSignupHandler);
-})(); 
+})();
+
+function updateNavbarForLogin() {
+  const nav = document.querySelector('.nav-links');
+  if (!nav) return;
+  let loginLink = nav.querySelector('#login-link');
+  let userActions = nav.querySelector('.user-actions');
+  let settingsBtn = nav.querySelector('.settings-btn');
+  // Always show settings button
+  if (!settingsBtn) {
+    settingsBtn = document.createElement('a');
+    settingsBtn.className = 'settings-btn';
+    settingsBtn.title = 'Settings';
+    settingsBtn.href = '/settings';
+    settingsBtn.style.display = 'flex';
+    settingsBtn.style.alignItems = 'center';
+    settingsBtn.style.justifyContent = 'center';
+    settingsBtn.style.marginLeft = '12px';
+    settingsBtn.innerHTML = '<svg width="22" height="22" fill="none" stroke="#e11d48" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.36.36.59.86.59 1.41s-.23 1.05-.59 1.41z"/></svg>';
+    nav.appendChild(settingsBtn);
+  }
+  // Remove duplicate settings buttons
+  const allSettings = nav.querySelectorAll('.settings-btn');
+  if (allSettings.length > 1) {
+    for (let i = 1; i < allSettings.length; i++) allSettings[i].remove();
+  }
+  if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (loginLink) loginLink.style.display = 'none';
+    if (!userActions) {
+      userActions = document.createElement('div');
+      userActions.className = 'user-actions';
+      userActions.style.display = 'flex';
+      userActions.style.alignItems = 'center';
+      userActions.style.gap = '12px';
+      // Profile picture
+      const avatar = document.createElement('img');
+      avatar.src = localStorage.getItem('profilePic') || 'https://www.gravatar.com/avatar/?d=mp&s=32';
+      avatar.alt = 'Profile';
+      avatar.className = 'nav-avatar';
+      avatar.style.width = '32px';
+      avatar.style.height = '32px';
+      avatar.style.borderRadius = '50%';
+      avatar.style.objectFit = 'cover';
+      // Logout button
+      const logoutBtn = document.createElement('button');
+      logoutBtn.className = 'logout-btn';
+      logoutBtn.textContent = 'Logout';
+      logoutBtn.style.background = '#e11d48';
+      logoutBtn.style.color = '#fff';
+      logoutBtn.style.border = 'none';
+      logoutBtn.style.borderRadius = '6px';
+      logoutBtn.style.padding = '6px 16px';
+      logoutBtn.style.fontWeight = '700';
+      logoutBtn.style.cursor = 'pointer';
+      logoutBtn.onclick = () => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('profilePic');
+        if (loginLink) loginLink.style.display = '';
+        if (userActions) userActions.remove();
+        updateNavbarForLogin();
+      };
+      userActions.appendChild(avatar);
+      userActions.appendChild(logoutBtn);
+      nav.appendChild(userActions);
+    }
+  } else {
+    if (loginLink) loginLink.style.display = '';
+    if (userActions) userActions.remove();
+  }
+}
+
+window.addEventListener('DOMContentLoaded', updateNavbarForLogin);
+
+function handleLoginSuccess() {
+  localStorage.setItem('isLoggedIn', 'true');
+  updateNavbarForLogin();
+}
+
+// Example: Hook into your login logic
+// If you use a login form, call handleLoginSuccess() after login
+// For demo, you can add: document.querySelector('.login-form')?.addEventListener('submit', e => { e.preventDefault(); handleLoginSuccess(); }); 

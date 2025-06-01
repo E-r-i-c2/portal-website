@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Careers - Portal</title>
+  <title>Careers - Kaged</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <header class="top-bar">
-    <div class="logo">Portal</div>
+    <div class="logo"><img src="/img/kaged-logo.jpg" alt="Kaged Logo" class="logo-img" style="height:40px;vertical-align:middle;"></div>
     <nav class="nav-links">
       <a href="/news" class="nav-link">News</a>
       <a href="/support" class="nav-link">Support</a>
       <a href="/about" class="nav-link">About</a>
       <a href="/careers" class="nav-link">Careers</a>
-      <button class="hero-btn" id="loginBtn" style="margin-left:24px;">Log In</button>
+      <a href="/settings" class="settings-btn" title="Settings" style="display:flex;align-items:center;justify-content:center;margin-left:12px;"><svg width="22" height="22" fill="none" stroke="#e11d48" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.36.36.59.86.59 1.41s-.23 1.05-.59 1.41z"/></svg></a>
     </nav>
   </header>
   <section class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title">Careers</h1>
-      <p class="hero-desc">Join the Portal team and help shape the future of gaming.</p>
+      <p class="hero-desc">Join the Kaged team and help shape the future of gaming.</p>
     </div>
   </section>
   <main style="max-width:900px;margin:40px auto 0 auto;padding:0 5vw;">
     <div style="background:#18181c;padding:32px 24px;border-radius:16px;box-shadow:0 2px 16px #0006;">
       <h2 style="color:#fff;font-weight:700;margin-bottom:12px;">We're not hiring yet!</h2>
-      <p style="color:#aaa;">Check back soon for open positions at Portal.</p>
+      <p style="color:#aaa;">Check back soon for open positions at Kaged.</p>
     </div>
   </main>
   <footer>
@@ -43,29 +43,10 @@
       <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="32"></a>
       <a href="#" class="social-icon"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" width="32"></a>
     </div>
-    <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
+    <div class="copyright">&copy; 2024 Kaged. All rights reserved.</div>
   </footer>
   <script>
-    const loginBtn = document.getElementById('loginBtn');
-    const loginModal = document.getElementById('loginModal');
-    const closeModal = document.getElementById('closeModal');
-    loginBtn.onclick = () => loginModal.style.display = 'flex';
-    closeModal.onclick = () => loginModal.style.display = 'none';
-    window.onclick = (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; };
-    loginModal.querySelector('form').onsubmit = e => { e.preventDefault(); alert('Logged in! (demo)'); loginModal.style.display = 'none'; };
+    // Remove login modal logic
   </script>
-
-  <!-- Login Modal -->
-  <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
-    <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
-      <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
-      <h2 style="color:#fff;font-weight:800;margin-bottom:18px;">Log In</h2>
-      <form>
-        <input type="text" placeholder="Username" style="width:100%;margin-bottom:16px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
-        <input type="password" placeholder="Password" style="width:100%;margin-bottom:18px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
-        <button type="submit" class="hero-btn" style="width:100%;">Log In</button>
-      </form>
-    </div>
-  </div>
 </body>
 </html> 

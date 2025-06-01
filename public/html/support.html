@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support | Portal</title>
+  <title>Support | Kaged</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -12,14 +12,15 @@
 <body>
   <!-- Top Navigation Bar -->
   <header class="top-bar">
-    <div class="logo">Portal</div>
+    <div class="logo"><img src="/img/kaged-logo.jpg" alt="Kaged Logo" class="logo-img" style="height:40px;vertical-align:middle;"></div>
     <nav class="nav-links">
       <a href="/" class="nav-link home-link">Home</a>
       <a href="/news" class="nav-link" id="news-link">News</a>
       <a href="/support" class="nav-link">Support</a>
       <a href="/learn" class="nav-link" id="learn-link">Learn</a>
       <a href="/about" class="nav-link" id="about-link">About</a>
-      <a href="#" class="nav-link" id="login-link">Log In</a>
+      <a href="/settings" class="settings-btn" title="Settings" style="display:flex;align-items:center;justify-content:center;margin-left:12px;"><svg width="22" height="22" fill="none" stroke="#e11d48" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.36.36.59.86.59 1.41s-.23 1.05-.59 1.41z"/></svg></a>
+      <!-- .user-actions will be injected here by JS when logged in -->
     </nav>
   </header>
 
@@ -72,7 +73,7 @@
       <a href="https://instagram.com/kyleeeliu" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @kyleeeliu" width="32"></a>
       <a href="https://instagram.com/itzmeadam69" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @itzmeadam69" width="32"></a>
     </div>
-    <div class="copyright">&copy; 2024 Portal. All rights reserved.</div>
+    <div class="copyright">&copy; 2024 Kaged. All rights reserved.</div>
   </footer>
 
   <script src="../js/script.js"></script>
@@ -106,19 +107,6 @@
     }
   });
   </script>
-
-  <!-- Login Modal -->
-  <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
-    <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
-      <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
-      <h2 style="color:#fff;font-weight:800;margin-bottom:18px;">Log In</h2>
-      <form>
-        <input type="text" placeholder="Username" style="width:100%;margin-bottom:16px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
-        <input type="password" placeholder="Password" style="width:100%;margin-bottom:18px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
-        <button type="submit" class="hero-btn" style="width:100%;">Log In</button>
-      </form>
-    </div>
-  </div>
 
 </body>
 </html> 
