@@ -57,97 +57,92 @@ window.addEventListener('keydown', function(e) {
 });
 
 // --- Robust Login Modal Handler (Always Works) ---
-function showLoginModal() {
-  var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
-  if (modal) {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+function handleLoginSuccess(username) {
+  localStorage.setItem('isLoggedIn', 'true');
+  localStorage.setItem('username', username);
+  updateNavbarForLogin();
+}
+
+// Update updateNavbarForLogin to show username
+function updateNavbarForLogin() {
+  const nav = document.querySelector('.nav-links');
+  if (!nav) return;
+  let loginLink = nav.querySelector('#login-link');
+  let userActions = nav.querySelector('.user-actions');
+  let settingsBtn = nav.querySelector('.settings-btn');
+  // Always show settings button
+  if (!settingsBtn) {
+    settingsBtn = document.createElement('a');
+    settingsBtn.className = 'settings-btn';
+    settingsBtn.title = 'Settings';
+    settingsBtn.href = '/settings';
+    settingsBtn.style.display = 'flex';
+    settingsBtn.style.alignItems = 'center';
+    settingsBtn.style.justifyContent = 'center';
+    settingsBtn.style.marginLeft = '12px';
+    settingsBtn.innerHTML = '<img src="/img/red%20gear%20asset.jpg" alt="Settings" style="width:38px;height:38px;object-fit:contain;">';
+    nav.appendChild(settingsBtn);
+  }
+  // Remove duplicate settings buttons
+  const allSettings = nav.querySelectorAll('.settings-btn');
+  if (allSettings.length > 1) {
+    for (let i = 1; i < allSettings.length; i++) allSettings[i].remove();
+  }
+  if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (loginLink) loginLink.style.display = 'none';
+    if (!userActions) {
+      userActions = document.createElement('div');
+      userActions.className = 'user-actions';
+      userActions.style.display = 'flex';
+      userActions.style.alignItems = 'center';
+      userActions.style.gap = '12px';
+      // Profile picture
+      const avatar = document.createElement('img');
+      avatar.src = localStorage.getItem('profilePic') || 'https://www.gravatar.com/avatar/?d=mp&s=32';
+      avatar.alt = 'Profile';
+      avatar.className = 'nav-avatar';
+      avatar.style.width = '32px';
+      avatar.style.height = '32px';
+      avatar.style.borderRadius = '50%';
+      avatar.style.objectFit = 'cover';
+      // Username
+      const usernameSpan = document.createElement('span');
+      usernameSpan.textContent = localStorage.getItem('username') || '';
+      usernameSpan.style.color = '#fff';
+      usernameSpan.style.fontWeight = '700';
+      usernameSpan.style.fontSize = '1.05em';
+      usernameSpan.style.marginLeft = '6px';
+      // Logout button
+      const logoutBtn = document.createElement('button');
+      logoutBtn.className = 'logout-btn';
+      logoutBtn.textContent = 'Logout';
+      logoutBtn.style.background = '#e11d48';
+      logoutBtn.style.color = '#fff';
+      logoutBtn.style.border = 'none';
+      logoutBtn.style.borderRadius = '6px';
+      logoutBtn.style.padding = '6px 16px';
+      logoutBtn.style.fontWeight = '700';
+      logoutBtn.style.cursor = 'pointer';
+      logoutBtn.onclick = () => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('profilePic');
+        localStorage.removeItem('username');
+        if (loginLink) loginLink.style.display = '';
+        if (userActions) userActions.remove();
+        updateNavbarForLogin();
+      };
+      userActions.appendChild(avatar);
+      userActions.appendChild(usernameSpan);
+      userActions.appendChild(logoutBtn);
+      nav.appendChild(userActions);
+    }
+  } else {
+    if (loginLink) loginLink.style.display = '';
+    if (userActions) userActions.remove();
   }
 }
-function hideLoginModal() {
-  var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-}
-(function() {
-  // Attach directly if present
-  function attachLoginHandler() {
-    var loginLink = document.getElementById('login-link');
-    if (loginLink) {
-      loginLink.onclick = function(e) {
-        e.preventDefault();
-        showLoginModal();
-      };
-    }
-    // Close button
-    var closeBtn = document.getElementById('closeModal');
-    if (closeBtn) {
-      closeBtn.onclick = function() {
-        hideLoginModal();
-      };
-    }
-    // Click outside modal content
-    var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
-    if (modal) {
-      modal.onclick = function(e) {
-        if (e.target === modal) hideLoginModal();
-      };
-      var form = modal.querySelector('form');
-      if (form) {
-        form.onsubmit = async function(e) {
-          e.preventDefault();
-          // Get username and password from form inputs
-          var inputs = form.querySelectorAll('input');
-          var username = inputs[0].value.trim();
-          var password = inputs[1].value;
-          // Simple validation
-          if (!username || !password) {
-            alert('Please enter both username and password.');
-            return;
-          }
-          try {
-            const res = await fetch('/login', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ username, password })
-            });
-            const data = await res.json();
-            if (res.ok && data.success) {
-              alert('Login successful!');
-              if (data.isAdmin) {
-                window.isAdmin = true;
-                location.reload();
-              } else {
-                window.isAdmin = false;
-                hideLoginModal();
-              }
-            } else {
-              alert(data.message || 'Login failed.');
-            }
-          } catch (err) {
-            alert('Network error. Please try again.');
-          }
-        };
-      }
-    }
-  }
-  // Try to attach immediately, and also on DOMContentLoaded
-  attachLoginHandler();
-  document.addEventListener('DOMContentLoaded', attachLoginHandler);
-  // Fallback: event delegation for dynamically added login-link
-  document.addEventListener('click', function(e) {
-    var t = e.target;
-    if (t && t.id === 'login-link') {
-      e.preventDefault();
-      showLoginModal();
-    }
-    if (t && t.id === 'closeModal') {
-      hideLoginModal();
-    }
-  });
-})();
+
+window.addEventListener('DOMContentLoaded', updateNavbarForLogin);
 
 // --- Sign Up Modal Handler ---
 (function() {
@@ -236,82 +231,86 @@ function hideLoginModal() {
   document.addEventListener('DOMContentLoaded', attachSignupHandler);
 })();
 
-function updateNavbarForLogin() {
-  const nav = document.querySelector('.nav-links');
-  if (!nav) return;
-  let loginLink = nav.querySelector('#login-link');
-  let userActions = nav.querySelector('.user-actions');
-  let settingsBtn = nav.querySelector('.settings-btn');
-  // Always show settings button
-  if (!settingsBtn) {
-    settingsBtn = document.createElement('a');
-    settingsBtn.className = 'settings-btn';
-    settingsBtn.title = 'Settings';
-    settingsBtn.href = '/settings';
-    settingsBtn.style.display = 'flex';
-    settingsBtn.style.alignItems = 'center';
-    settingsBtn.style.justifyContent = 'center';
-    settingsBtn.style.marginLeft = '12px';
-    settingsBtn.innerHTML = '<svg width="22" height="22" fill="none" stroke="#e11d48" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 12 3.6V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.36.36.59.86.59 1.41s-.23 1.05-.59 1.41z"/></svg>';
-    nav.appendChild(settingsBtn);
-  }
-  // Remove duplicate settings buttons
-  const allSettings = nav.querySelectorAll('.settings-btn');
-  if (allSettings.length > 1) {
-    for (let i = 1; i < allSettings.length; i++) allSettings[i].remove();
-  }
-  if (localStorage.getItem('isLoggedIn') === 'true') {
-    if (loginLink) loginLink.style.display = 'none';
-    if (!userActions) {
-      userActions = document.createElement('div');
-      userActions.className = 'user-actions';
-      userActions.style.display = 'flex';
-      userActions.style.alignItems = 'center';
-      userActions.style.gap = '12px';
-      // Profile picture
-      const avatar = document.createElement('img');
-      avatar.src = localStorage.getItem('profilePic') || 'https://www.gravatar.com/avatar/?d=mp&s=32';
-      avatar.alt = 'Profile';
-      avatar.className = 'nav-avatar';
-      avatar.style.width = '32px';
-      avatar.style.height = '32px';
-      avatar.style.borderRadius = '50%';
-      avatar.style.objectFit = 'cover';
-      // Logout button
-      const logoutBtn = document.createElement('button');
-      logoutBtn.className = 'logout-btn';
-      logoutBtn.textContent = 'Logout';
-      logoutBtn.style.background = '#e11d48';
-      logoutBtn.style.color = '#fff';
-      logoutBtn.style.border = 'none';
-      logoutBtn.style.borderRadius = '6px';
-      logoutBtn.style.padding = '6px 16px';
-      logoutBtn.style.fontWeight = '700';
-      logoutBtn.style.cursor = 'pointer';
-      logoutBtn.onclick = () => {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('profilePic');
-        if (loginLink) loginLink.style.display = '';
-        if (userActions) userActions.remove();
-        updateNavbarForLogin();
-      };
-      userActions.appendChild(avatar);
-      userActions.appendChild(logoutBtn);
-      nav.appendChild(userActions);
+// Patch login modal handler to use handleLoginSuccess
+(function() {
+  function showLoginModal() {
+    var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
-  } else {
-    if (loginLink) loginLink.style.display = '';
-    if (userActions) userActions.remove();
   }
-}
-
-window.addEventListener('DOMContentLoaded', updateNavbarForLogin);
-
-function handleLoginSuccess() {
-  localStorage.setItem('isLoggedIn', 'true');
-  updateNavbarForLogin();
-}
-
-// Example: Hook into your login logic
-// If you use a login form, call handleLoginSuccess() after login
-// For demo, you can add: document.querySelector('.login-form')?.addEventListener('submit', e => { e.preventDefault(); handleLoginSuccess(); }); 
+  function hideLoginModal() {
+    var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+  // Attach directly if present
+  function attachLoginHandler() {
+    var loginLink = document.getElementById('login-link');
+    if (loginLink) {
+      loginLink.onclick = function(e) {
+        e.preventDefault();
+        showLoginModal();
+      };
+    }
+    // Close button
+    var closeBtn = document.getElementById('closeModal');
+    if (closeBtn) {
+      closeBtn.onclick = function() {
+        hideLoginModal();
+      };
+    }
+    // Click outside modal content
+    var modal = document.getElementById('loginModal') || document.getElementById('login-modal');
+    if (modal) {
+      modal.onclick = function(e) {
+        if (e.target === modal) hideLoginModal();
+      };
+      var form = modal.querySelector('form');
+      if (form) {
+        form.onsubmit = async function(e) {
+          e.preventDefault();
+          var inputs = form.querySelectorAll('input');
+          var username = inputs[0].value.trim();
+          var password = inputs[1].value;
+          if (!username || !password) {
+            alert('Please enter both username and password.');
+            return;
+          }
+          try {
+            const res = await fetch('/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              alert('Login successful!');
+              handleLoginSuccess(username);
+              hideLoginModal();
+            } else {
+              alert(data.message || 'Login failed.');
+            }
+          } catch (err) {
+            alert('Network error. Please try again.');
+          }
+        };
+      }
+    }
+  }
+  attachLoginHandler();
+  document.addEventListener('DOMContentLoaded', attachLoginHandler);
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.id === 'login-link') {
+      e.preventDefault();
+      showLoginModal();
+    }
+    if (t && t.id === 'closeModal') {
+      hideLoginModal();
+    }
+  });
+})(); 

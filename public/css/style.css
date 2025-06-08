@@ -17,7 +17,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #111;
+  background: #000 !important;
   padding: 0 48px;
   height: 80px;
   box-shadow: 0 2px 8px #0008;
@@ -36,6 +36,12 @@ body {
 .nav-links {
   display: flex;
   gap: 36px;
+  align-items: center;
+}
+.nav-link, .settings-btn {
+  display: flex;
+  align-items: center;
+  height: 38px;
 }
 .nav-link {
   color: #fff;
@@ -61,6 +67,18 @@ body {
 }
 .nav-link:hover::after {
   width: 100%;
+}
+.settings-btn img {
+  width: 38px !important;
+  height: 38px !important;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 0;
+}
+.nav-links .social-icon img, .nav-links .nav-link img {
+  width: 38px !important;
+  height: 38px !important;
+  object-fit: contain;
 }
 
 /* Hero Section */
