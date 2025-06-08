@@ -17,10 +17,21 @@
       font-size: 1.25em;
       border-radius: 12px;
       padding: 16px 0;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      margin-top: 8px;
       box-shadow: 0 2px 12px #16a34a33;
       letter-spacing: 1px;
       text-shadow: 0 1px 4px #0008;
+    }
+    .settings-main-spacer {
+      height: 48px;
+    }
+    .account-access-section {
+      margin-bottom: 56px;
+      margin-top: 24px;
+    }
+    .about-main, .profile-main, .profile-section, .profile-settings-section {
+      margin-top: 56px !important;
     }
   </style>
 </head>
@@ -50,7 +61,8 @@
 
   <!-- Settings Content -->
   <main style="max-width:700px;margin:48px auto 0 auto;padding:0 5vw;">
-    <section style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-bottom:40px;color:#fff;">
+    <div class="settings-main-spacer"></div>
+    <section class="account-access-section" style="background:#23232b;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px #0006;margin-bottom:40px;color:#fff;">
       <h2 style="color:#e11d48;margin-bottom:18px;">Account Access</h2>
       <div id="auth-tabs" style="display:flex;gap:24px;margin-bottom:18px;">
         <button id="login-tab" class="auth-tab active" style="background:#e11d48;color:#fff;padding:8px 24px;border:none;border-radius:8px;font-weight:700;cursor:pointer;">Log In</button>
