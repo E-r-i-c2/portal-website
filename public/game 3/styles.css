@@ -1,0 +1,349 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+}
+
+.game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    display: inline-block;  /* Allow debug panel to sit beside it */
+}
+
+canvas {
+    border: 2px solid #fff;
+    display: block;
+}
+
+.score, .lives {
+    position: absolute;
+    top: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+.score {
+    left: 10px;
+}
+
+.lives {
+    right: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay h1 {
+    font-size: 36px;
+    color: #f00;
+    text-shadow: 0 0 10px #f00;
+    margin-bottom: 30px;
+}
+
+.overlay p {
+    margin: 15px 0;
+}
+
+.overlay .small {
+    font-size: 8px;
+    color: #aaa;
+}
+
+.difficulty-option {
+    padding: 5px;
+    color: #666;
+}
+
+.difficulty-option.selected {
+    color: #fff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.high-score {
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0;
+}
+
+.high-score:empty {
+    display: none;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.power-up {
+    position: absolute;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: brightness(1);
+    }
+    to {
+        filter: brightness(1.5);
+    }
+}
+
+.difficulty-select {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.difficulty-options {
+    margin: 15px 0;
+}
+
+.difficulty-option {
+    padding: 8px;
+    margin: 5px 0;
+    color: #666;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.difficulty-option:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #0ff;
+    transform: scale(1.1);
+}
+
+.high-scores {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.high-scores-list {
+    margin: 10px 0;
+}
+
+.high-score-entry {
+    padding: 5px;
+    color: #666;
+}
+
+.high-score-entry.selected {
+    color: #fff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.leaderboard-tabs {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: 1px solid #666;
+    color: #666;
+    padding: 5px 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.tab-btn.selected {
+    color: #fff;
+    border-color: #fff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.leaderboard-entries {
+    margin: 20px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+}
+
+.leaderboard-entry {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 10px;
+    padding: 5px;
+    text-align: left;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.leaderboard-entry.new {
+    animation: glow 1s infinite alternate;
+}
+
+.entry-rank {
+    color: #ff0;
+    width: 30px;
+}
+
+.entry-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.entry-score {
+    color: #0ff;
+}
+
+.entry-date {
+    color: #aaa;
+    font-size: 8px;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    color: #666;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Add styles for name input */
+.name-input {
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 10px;
+    margin: 20px 0;
+    text-align: center;
+    width: 200px;
+    text-transform: uppercase;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: #0ff;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    margin-top: -20px;
+    animation-delay: 0s;
+}
+
+.galaga-logo {
+    font-size: 36px;
+    color: #f00;
+    text-shadow: 0 0 20px #f00;
+    animation: pulse 2s ease-in-out infinite;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.credit-text {
+    font-size: 12px;
+    color: #f00;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #f00;
+    animation: pulse 2s ease-in-out infinite;
+    font-weight: bold;
+}
+
+.click-prompt {
+    font-size: 12px;
+    color: #fff;
+    animation: pulse-fade 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); text-shadow: 0 0 20px #f00; }
+    50% { transform: scale(1.1); text-shadow: 0 0 40px #f00; }
+    100% { transform: scale(1); text-shadow: 0 0 20px #f00; }
+}
+
+@keyframes pulse-fade {
+    0% { opacity: 0.2; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.2; transform: scale(0.95); }
+}
+
+.start-high-score {
+    position: absolute;
+    bottom: 40px;
+    font-size: 12px;
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0;
+    animation: pulse-fade 2s ease-in-out infinite;
+}
+
+.ship-sprite {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ship-sprite::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(
+        50% 0%,
+        70% 50%,
+        100% 100%,
+        0% 100%,
+        30% 50%
+    );
+}
+
+/* Add different colors for each ship */
+.ship1 .ship-sprite::before { background: #0f0; }  /* Green */
+.ship2 .ship-sprite::before { background: #00f; }  /* Blue */
+.ship3 .ship-sprite::before { background: #f00; }  /* Red */ 

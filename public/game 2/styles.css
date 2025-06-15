@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #87CEEB;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #1a5f7a;
+    margin-bottom: 30px;
+}
+
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.fishing-spot {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#fishButton {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#fishButton:hover {
+    background-color: #1976D2;
+}
+
+.inventory {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.fish-card {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.common { background-color: #E0E0E0; }
+.uncommon { background-color: #81C784; }
+.rare { background-color: #64B5F6; }
+.epic { background-color: #BA68C8; }
+.legendary { background-color: #FFD700; }
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    min-height: 50px;
+}
+
+.stats {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+} 
