@@ -179,6 +179,6 @@ app.get('/settings', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/settings.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
