@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game 8 - Kaged</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="logo">Kaged</div>
+    <input type="text" class="search-bar" placeholder="Search games...">
+    <nav class="categories">Categories</nav>
+    <button class="sign-in">Sign In</button>
+    <select class="language">
+      <option>EN</option>
+      <option>ES</option>
+      <option>FR</option>
+    </select>
+  </header>
+
+  <main class="game-detail">
+    <a href="index.html" class="back-link">&larr; Back to Kaged</a>
+    <div class="game-detail-content">
+      <img class="game-detail-cover" src="https://via.placeholder.com/500x650?text=Game+8" alt="Game 8 Cover">
+      <div class="game-detail-info">
+        <h1 class="game-detail-title">Game 8</h1>
+        <p class="game-detail-desc">Game 8 is a new original game! Stay tuned for more details.</p>
+        <div class="game-detail-screenshots">
+          <img src="https://via.placeholder.com/220x120?text=Screenshot+1" alt="Screenshot 1">
+          <img src="https://via.placeholder.com/220x120?text=Screenshot+2" alt="Screenshot 2">
+        </div>
+        <a href="/game 8/index.html" class="play-btn">Play Game</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bottom-section">
+    <div class="ad poki-ad">Poki Ad Placeholder</div>
+    <a href="index.html" id="back-to-top" style="text-decoration:none;">Back to Kaged</a>
+  </footer>
+
+  <script src="../js/script.js"></script>
+
+  <!-- Login Modal -->
+  <div id="loginModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
+    <div style="background:#18181c;padding:40px 32px;border-radius:16px;box-shadow:0 4px 32px #000a;max-width:340px;width:90vw;position:relative;">
+      <button id="closeModal" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer;">&times;</button>
+      <h2 style="color:#fff;font-weight:800;margin-bottom:18px;">Log In</h2>
+      <form>
+        <input type="text" placeholder="Username" style="width:100%;margin-bottom:16px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
+        <input type="password" placeholder="Password" style="width:100%;margin-bottom:18px;padding:10px 12px;border-radius:6px;border:none;background:#23232b;color:#fff;font-size:1em;">
+        <button type="submit" class="hero-btn" style="width:100%;">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <nav class="nav-links">
+    <a href="/" class="nav-link home-link">Home</a>
+    <a href="/news" class="nav-link" id="news-link">News</a>
+    <a href="/support" class="nav-link">Support</a>
+    <a href="/learn" class="nav-link" id="learn-link">Learn</a>
+    <a href="/about" class="nav-link" id="about-link">About</a>
+    <a href="#" class="nav-link" id="login-link">Log In</a>
+    <a href="/settings" class="settings-btn" title="Settings" style="display:flex;align-items:center;justify-content:center;margin-left:12px;"><img src="/img/red%20gear%20asset.jpg" alt="Settings" style="width:28px;height:28px;object-fit:contain;"></a>
+  </nav>
+
+  <div class="copyright">&copy; 2024 Kaged. All rights reserved.</div>
+
+</body>
+</html> 
