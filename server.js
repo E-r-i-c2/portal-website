@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const https = require('https');
 
 const app = express();
 const PORT = 3000;
@@ -179,6 +180,18 @@ app.get('/settings', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/settings.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+try {
+  const privateKey = fs.readFileSync(path.join(__dirname, 'privkey.pem'), 'utf8');
+  const certificate = fs.readFileSync(path.join(__dirname, 'fullchain.pem'), 'utf8');
+  const credentials = { key: privateKey, cert: certificate };
+
+  const httpsServer = https.createServer(credentials, app);
+  httpsServer.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running at https://localhost:${PORT}`);
+  });
+} catch (e) {
+  console.log('Could not find SSL certificates, starting HTTP server instead.');
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+}
