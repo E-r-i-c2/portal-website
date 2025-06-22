@@ -4,9 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 const https = require('https');
+const http = require('http');
 
 const app = express();
-const PORT = 80;
+const HTTP_PORT = 80;
+const HTTPS_PORT = 443;
+const DEV_PORT = 3000;
 const FEEDBACK_FILE = path.join(__dirname, 'feedback.json');
 const USERS_FILE = path.join(__dirname, 'users.json');
 const NEWS_FILE = path.join(__dirname, 'public/data/news.json');
@@ -181,17 +184,29 @@ app.get('/settings', (req, res) => {
 });
 
 try {
+  // Production setup with SSL
   const privateKey = fs.readFileSync('/etc/letsencrypt/live/kaged.org/privkey.pem', 'utf8');
   const certificate = fs.readFileSync('/etc/letsencrypt/live/kaged.org/fullchain.pem', 'utf8');
   const credentials = { key: privateKey, cert: certificate };
 
   const httpsServer = https.createServer(credentials, app);
-  httpsServer.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running at https://localhost:${PORT}`);
+  httpsServer.listen(HTTPS_PORT, '0.0.0.0', () => {
+    console.log(`HTTPS Server running at https://localhost:${HTTPS_PORT}`);
   });
+
+  // Redirect HTTP to HTTPS
+  const httpServer = http.createServer((req, res) => {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+  });
+  httpServer.listen(HTTP_PORT, '0.0.0.0', () => {
+    console.log(`HTTP Server running and redirecting to HTTPS on port ${HTTP_PORT}`);
+  });
+
 } catch (e) {
-  console.log('Could not find SSL certificates, starting HTTP server instead.');
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+  // Development fallback without SSL
+  console.log('Could not find SSL certificates, starting HTTP server for development on port ' + DEV_PORT);
+  app.listen(DEV_PORT, '0.0.0.0', () => {
+    console.log(`Server running at http://localhost:${DEV_PORT}`);
   });
 }
