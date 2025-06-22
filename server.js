@@ -6,7 +6,7 @@ const cors = require('cors');
 const https = require('https');
 
 const app = express();
-const PORT = 3000;
+const PORT = 80;
 const FEEDBACK_FILE = path.join(__dirname, 'feedback.json');
 const USERS_FILE = path.join(__dirname, 'users.json');
 const NEWS_FILE = path.join(__dirname, 'public/data/news.json');
@@ -181,8 +181,8 @@ app.get('/settings', (req, res) => {
 });
 
 try {
-  const privateKey = fs.readFileSync(path.join(__dirname, 'privkey.pem'), 'utf8');
-  const certificate = fs.readFileSync(path.join(__dirname, 'fullchain.pem'), 'utf8');
+  const privateKey = fs.readFileSync('/etc/letsencrypt/live/kaged.org/privkey.pem', 'utf8');
+  const certificate = fs.readFileSync('/etc/letsencrypt/live/kaged.org/fullchain.pem', 'utf8');
   const credentials = { key: privateKey, cert: certificate };
 
   const httpsServer = https.createServer(credentials, app);
