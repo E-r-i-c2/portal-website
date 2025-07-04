@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding: An Introduction | Kaged</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="top-bar">
+    <div class="logo"><img src="/img/kaged-logo.jpg" alt="Kaged Logo" class="logo-img" style="height:40px;vertical-align:middle;"></div>
+    <nav class="nav-links">
+      <a href="/" class="nav-link home-link">Home</a>
+      <a href="/news" class="nav-link" id="news-link">News</a>
+      <a href="/support" class="nav-link">Support</a>
+      <a href="/learn" class="nav-link" id="learn-link">Learn</a>
+      <a href="/about" class="nav-link" id="about-link">About</a>
+      <a href="/settings" class="settings-btn" title="Settings" style="display:flex;align-items:center;justify-content:center;margin-left:12px;"><img src="/img/red%20gear%20asset.jpg" alt="Settings" style="width:28px;height:28px;object-fit:contain;"></a>
+    </nav>
+  </header>
+
+  <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:64px 0 32px 0;max-width:700px;margin:0 auto;">
+    <h1 class="hero-title">AI Coding: An Introduction</h1>
+    <article class="article-content" style="width:100%;max-width:650px;">
+      <p>So, you want to learn how to code with AI. You've come to the right place. Here, we've compiled a short tutorial and helpful tricks. Without further ado, let's begin.</p>
+      <p><em>Side note: these instructions were written in 2025 for someone using Cursor on Mac. Other code editors or operating systems may look vastly different.</em></p>
+
+      <h2>The Agent: Cursor</h2>
+      <p>All this AI coding wouldn't be possible without <a href="https://www.cursor.com/en" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Cursor</a>, a code editor with an AI sidebar that can analyze, write, and troubleshoot your code. The free trial allows two weeks of full experimentation and then limited usage; the Pro version is $20/month.</p>
+
+      <h2>Project?</h2>
+      <p>Cursor is a code <em>editor</em>; it can't store or run your code. To start, decide whether you want to make an app or a website.</p>
+
+      <h3>App: Xcode</h3>
+      <p>To create an app, you'll need Xcode (downloadable on the App Store), which requires you to join the <a href="https://developer.apple.com/programs/enroll" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Apple Developer program</a>. To join, you need an Apple ID with two-factor authentication on and be the legal age of majority (region specific).</p>
+      <p>Once you've joined, open Xcode and sign in. You'll be presented with a few options. Click "create new project" and select "app" when prompted, then you can begin!</p>
+
+      <h3>Website: Github Desktop</h3>
+      <p>To make a website, you'll need Github Desktop, which you can download <a href="https://desktop.github.com/download/" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">here</a>. Open the app, click File &gt; New Repository (or Command+N), and you are all set.</p>
+
+      <h2>Before You Start</h2>
+      <p>A friendly reminder: Artificial Intelligence is not your friend. It is not human. It is an advanced prediction engine, learning from patterns in its enormous databases to find which word should go next. Big tasks ("build Tetris") lead it on tangents, producing faulty code. Instead, break the task into manageable chunks for the AI.</p>
+      <p>How? Simple—let AI talk to the AI; after all, it knows itself best. Pitch your idea, however you'd go about that, to your preferred LLM, then tack "make this into a set of instructions for Cursor to code for me" onto the end. Copy the LLM's output to paste into Cursor later.</p>
+
+      <h2>The Journey Begins</h2>
+      <p>Open Cursor, and click "Open Project", then select the folder of the project you made from Xcode or Github Desktop. A "New Chat" should automatically open. Make sure "Agent" is selected at the bottom of the text box, then paste in your LLM's output from before. And <em>voila</em>, you have a first iteration.</p>
+
+      <h2>Debugging</h2>
+      <p>Coding, when you're not writing the code, is problem solving. You test your code, find the problems in it, and solve said problems. The first step is testing. If you've made a website, open the index.html file Cursor generated. If you made an app, open the file in Xcode. Test it. Does everything work as it should? (It likely won't. The first iteration is rarely good.)</p>
+      <p>If you find problems in your code (which you will)—if something, or everything, doesn't work as it should, the next step is to solve the problem! Go back to Cursor and let it know what isn't working. It could be as simple as "nothing is happening", or as detailed as "this option doesn't show up in the context menu when I right-click". If you don't like anything in the generated app—be it game design or lag or even font choice—let Cursor know and work on changing it.</p>
+      <p>Now, test your newly-re-generated code again and repeat this process until you are satisfied. At which point, congratulations, because you have successfully made an app/game/website!</p>
+
+      <h2>Integrations</h2>
+      <p>Sometimes Cursor alone isn't enough. Luckily, it can work with <a href="https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Figma</a> and <a href="https://docs.google.com/document/d/16PWW3jJ0wiNJcegsmYy_EPFdraJutvt03LjM8Yf7iNI/edit?usp=sharing" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Blender</a>, among many others! To use Figma and Blender with Cursor, you'll need to install their respective MCPs (Model Context Protocol, or a standardized way for these apps to provide information to LLMs). Instructions are linked above.</p>
+      <p>You can also use another LLM's API within Cursor, for example, if you are building a chatbot app. To do so, you'll need the API key:</p>
+      <ul>
+        <li>For ChatGPT, you need a paid account. You can generate API keys <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">here</a>.</li>
+        <li>For Claude, you'll need to create a developer account. Pricing is based on usage (tokens processed); the first API key is $5. You can create them <a href="https://console.anthropic.com/dashboard" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">here</a>.</li>
+        <li>For Gemini, pricing is based on usage; there is a free tier but with strict usage limits. You can create API keys in <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color:#e11d48;text-decoration:underline;">Google AI Studio</a>.</li>
+      </ul>
+      <p>Once you have an API key, you can describe what you want to make to Cursor, and add: "…make this with (LLM type)'s API. Here is the API key: (key)." Cursor may return code that includes a placeholder for your API key (something along the lines of "YOUR_API_KEY"); if this happens, paste your key in the placeholder and you're set.</p>
+
+      <h2>And Finally</h2>
+      <p>Congratulations on embarking on your journey into AI-assisted coding! By utilizing Cursor, you've equipped yourself with a powerful tool that enhances your coding experience, whether you're developing an app or a website. Remember, the key to success in this endeavor lies in breaking down complex tasks into manageable parts and leveraging the capabilities of AI to assist you along the way.</p>
+      <p>Keep in mind that AI is a tool to augment your creativity and problem-solving skills, not a replacement for them. Stay curious, keep experimenting, and most importantly, enjoy the process of building and creating. The world of AI coding is vast and full of potential—your journey has begun!</p>
+      <p><b>Happy coding!</b></p>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="/support" class="footer-link" id="footer-support-link">Support</a>
+      <a href="/about" class="footer-link" id="footer-about-link">About</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Twitter" width="32"></a>
+      <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Facebook" width="32"></a>
+      <a href="https://instagram.com/kyleeeliu" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @kyleeeliu" width="32"></a>
+      <a href="https://instagram.com/itzmeadam69" class="social-icon" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="Instagram @itzmeadam69" width="32"></a>
+    </div>
+    <div class="copyright">&copy; 2024 Kaged. All rights reserved.</div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html> 

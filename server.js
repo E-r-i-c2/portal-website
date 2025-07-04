@@ -187,15 +187,9 @@ app.get('/learn-article1', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/learn-article1.html'));
 });
 
-// Optionally, serve any /public/html/*.html file directly
-// app.get('/public/html/:file', (req, res) => {
-//   const fileName = req.params.file;
-//   if (/^[a-zA-Z0-9\-_]+\.html$/.test(fileName)) {
-//     res.sendFile(path.join(__dirname, 'public/html', fileName));
-//   } else {
-//     res.status(404).send('Not found');
-//   }
-// });
+app.get('/learn-article2', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/learn-article2.html'));
+});
 
 try {
   // Production setup with SSL
