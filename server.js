@@ -187,10 +187,6 @@ app.get('/learn-article1', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/learn-article1.html'));
 });
 
-app.get('/learn-article2', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/learn-article2.html'));
-});
-
 try {
   // Production setup with SSL
   const privateKey = fs.readFileSync('/etc/letsencrypt/live/kaged.org/privkey.pem', 'utf8');
