@@ -43,67 +43,67 @@
   <section class="game-grid" id="games">
     <a href="/game%201/index.html" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Game 1">
+        <img src="/img/game1.jpg" alt="Volleyball">
         <div class="game-title">Volleyball</div>
       </div>
     </a>
     <a href="/game%202/index.html" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Game 2">
+        <img src="/img/game2.jpg" alt="Fishing Adventure">
         <div class="game-title">Fishing Adventure</div>
       </div>
     </a>
     <a href="/game%203/index.html" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Game 3">
+        <img src="/img/game3.jpg" alt="Ripoff Galaga">
         <div class="game-title">Ripoff Galaga</div>
       </div>
     </a>
     <a href="/game%204/index.html" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Game 4">
+        <img src="/img/game4.jpg" alt="Alien Platform Adventure">
         <div class="game-title">Alien Platform Adventure</div>
       </div>
     </a>
     <a href="https://chess--five.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=600&q=80" alt="Game 5">
+        <img src="https://api.microlink.io/?url=https://chess--five.vercel.app/&screenshot=true&meta=false" alt="Chess Game">
         <div class="game-title">Chess Game</div>
       </div>
     </a>
     <a href="https://task-manager-indol-zeta-28.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3fd8?auto=format&fit=crop&w=600&q=80" alt="Game 6">
+        <img src="https://api.microlink.io/?url=https://task-manager-indol-zeta-28.vercel.app/&screenshot=true&meta=false" alt="Task Planner with Calendar">
         <div class="game-title">Task Planner with Calendar</div>
       </div>
     </a>
     <a href="https://speechtotext-silk.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Game 7">
+        <img src="https://api.microlink.io/?url=https://speechtotext-silk.vercel.app/&screenshot=true&meta=false" alt="Voice Translator">
         <div class="game-title">Voice Translator</div>
       </div>
     </a>
     <a href="https://flow-seven-teal.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Game 8">
+        <img src="https://api.microlink.io/?url=https://flow-seven-teal.vercel.app/&screenshot=true&meta=false" alt="Smart Task Manager">
         <div class="game-title">Smart Task Manager</div>
       </div>
     </a>
     <a href="https://war-game-eosin.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Game 9">
+        <img src="https://api.microlink.io/?url=https://war-game-eosin.vercel.app/&screenshot=true&meta=false" alt="Civilization Game">
         <div class="game-title">Civilization Game</div>
       </div>
     </a>
     <a href="https://taskplanner-ygqf.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Game 10">
+        <img src="https://api.microlink.io/?url=https://taskplanner-ygqf.vercel.app/&screenshot=true&meta=false" alt="Task Planner">
         <div class="game-title">Task Planner</div>
       </div>
     </a>
     <a href="https://turnbasedgame-chi.vercel.app/" style="text-decoration:none;color:inherit;">
       <div class="game-card">
-        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" alt="Game 11">
+        <img src="https://api.microlink.io/?url=https://turnbasedgame-chi.vercel.app/&screenshot=true&meta=false" alt="Shadow Duelists">
         <div class="game-title">Shadow Duelists</div>
       </div>
     </a>
@@ -199,6 +199,17 @@
     setupNewsAddButton();
     fetchLocalNews().then(() => {
       fetchGamingNews();
+    });
+
+    // 动态为本地游戏设置缩略图
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('img.auto-thumb').forEach(function(img) {
+        var url = img.getAttribute('data-url');
+        if (url) {
+          var absUrl = window.location.origin + url;
+          img.src = 'https://api.microlink.io/?url=' + encodeURIComponent(absUrl) + '&screenshot=true&meta=false';
+        }
+      });
     });
   </script>
 
