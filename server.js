@@ -123,6 +123,12 @@ app.get('/about', (req, res) => {
 app.get('/learn', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/learn.html'));
 });
+app.get('/learn-article1', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/learn-article1.html'));
+});
+app.get('/learn-article2', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/learn-article2.html'));
+});
 app.get('/news', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/news.html'));
 });
